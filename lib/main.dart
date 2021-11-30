@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
 
 void main() => runApp(const MyApp());
 
@@ -10,10 +9,22 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) => MaterialApp(
         home: Scaffold(
           appBar: AppBar(
-            title: const Text("Lottie Animation"),
+            title: const Text("Wrap"),
           ),
           body: Center(
-            child: Lottie.asset("assets/life.json"),
+            child: Wrap(
+              children: [
+                ...Iterable.generate(10).map(
+                  (i) => Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: ElevatedButton(
+                      onPressed: () {},
+                      child: Text("Button ${i + 1}"),
+                    ),
+                  ),
+                )
+              ],
+            ),
           ),
         ),
       );
