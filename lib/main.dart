@@ -9,21 +9,19 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) => MaterialApp(
         home: Scaffold(
           appBar: AppBar(
-            title: const Text("Wrap"),
+            title: const Text("FittedBox"),
           ),
           body: Center(
-            child: Wrap(
-              children: [
-                ...Iterable.generate(10).map(
-                  (i) => Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: ElevatedButton(
-                      onPressed: () {},
-                      child: Text("Button ${i + 1}"),
-                    ),
-                  ),
-                )
-              ],
+            child: Container(
+              height: 100,
+              color: Colors.black,
+              child: const FittedBox(
+                child: Center(
+                    child: Text(
+                  "FittedBox",
+                  style: TextStyle(color: Colors.white),
+                )),
+              ),
             ),
           ),
         ),
