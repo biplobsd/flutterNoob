@@ -36,6 +36,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   introduction_screen: ^2.1.0
   lottie: ^1.2.1
+  flutter_native_splash: ^1.3.2
 
 dev_dependencies:
   flutter_test:
@@ -51,6 +52,10 @@ dev_dependencies:
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
+flutter_native_splash:
+  color: "#42a5f5"
+  image: assets/splash.png
+
 # The following section is specific to Flutter.
 flutter:
 
@@ -60,8 +65,9 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - assets/life.json
+  assets:
+    - assets/life.json
+    - assets/splash.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
