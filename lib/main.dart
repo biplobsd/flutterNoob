@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
 import 'package:flutter/services.dart';
 
 void main() {
@@ -20,36 +21,23 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   late bool isVisible = true;
 
-  void isSee() {
-    setState(() {
-      isVisible = !isVisible;
-    });
-  }
-
   @override
   Widget build(BuildContext context) => MaterialApp(
         home: Scaffold(
-          extendBodyBehindAppBar: true,
-          appBar: AppBar(
-            title: const Text("Spread Operator"),
-            backgroundColor: Colors.transparent,
-          ),
-          body: SafeArea(
-            child: SingleChildScrollView(
-              child: Center(
-                child: Column(
-                  children: [
-                    ...Iterable.generate(66).map(
-                      (e) => ElevatedButton(
-                        onPressed: () {},
-                        child: Text("Button $e"),
-                      ),
-                    ),
-                  ],
+            extendBodyBehindAppBar: true,
+            appBar: AppBar(
+              title: const Text("ClipRRect"),
+              backgroundColor: Colors.transparent,
+            ),
+            body: Center(
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(10),
+                child: Container(
+                  color: Colors.redAccent,
+                  width: 250,
+                  height: 250,
                 ),
               ),
-            ),
-          ),
-        ),
+            )),
       );
 }
