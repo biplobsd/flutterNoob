@@ -34,17 +34,19 @@ class _MyAppState extends State<MyApp> {
             title: const Text("Spread Operator"),
             backgroundColor: Colors.transparent,
           ),
-          body: SingleChildScrollView(
-            child: Center(
-              child: Column(
-                children: [
-                  ...Iterable.generate(66).map(
-                    (e) => ElevatedButton(
-                      onPressed: () {},
-                      child: Text("Button $e"),
+          body: SafeArea(
+            child: SingleChildScrollView(
+              child: Center(
+                child: Column(
+                  children: [
+                    ...Iterable.generate(66).map(
+                      (e) => ElevatedButton(
+                        onPressed: () {},
+                        child: Text("Button $e"),
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           ),
