@@ -11,19 +11,21 @@ class MyApp extends StatelessWidget {
           appBar: AppBar(
             title: const Text("FittedBox"),
           ),
-          body: Center(
-            child: Container(
-              height: 100,
-              color: Colors.black,
-              child: const FittedBox(
-                child: Center(
-                    child: Text(
-                  "FittedBox",
-                  style: TextStyle(color: Colors.white),
-                )),
-              ),
-            ),
-          ),
+          body: Center(child: Builder(
+            builder: (context) {
+              return GestureDetector(
+                onTap: () {
+                  Scaffold.of(context).showSnackBar(
+                    const SnackBar(
+                      duration: Duration(seconds: 1),
+                      content: Text("This is the SnackBar"),
+                    ),
+                  );
+                },
+                child: Image.asset("assets/splash.png"),
+              );
+            },
+          )),
         ),
       );
 }
