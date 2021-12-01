@@ -29,19 +29,23 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) => MaterialApp(
         home: Scaffold(
+          extendBodyBehindAppBar: true,
           appBar: AppBar(
             title: const Text("Spread Operator"),
+            backgroundColor: Colors.transparent,
           ),
-          body: Center(
-            child: Column(
-              children: [
-                ...Iterable.generate(11).map(
-                  (e) => ElevatedButton(
-                    onPressed: () {},
-                    child: Text("Button $e"),
+          body: SingleChildScrollView(
+            child: Center(
+              child: Column(
+                children: [
+                  ...Iterable.generate(66).map(
+                    (e) => ElevatedButton(
+                      onPressed: () {},
+                      child: Text("Button $e"),
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),
