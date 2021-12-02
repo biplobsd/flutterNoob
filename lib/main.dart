@@ -5,8 +5,8 @@ import 'package:flutter/services.dart';
 void main() {
   SystemChrome.setSystemUIOverlayStyle(
     const SystemUiOverlayStyle(
-        statusBarColor: Colors.purpleAccent,
-        systemNavigationBarColor: Colors.blueAccent),
+        statusBarColor: Colors.transparent,
+        systemNavigationBarColor: Colors.transparent),
   );
   runApp(const MyApp());
 }
@@ -24,20 +24,42 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) => MaterialApp(
         home: Scaffold(
-            extendBodyBehindAppBar: true,
-            appBar: AppBar(
-              title: const Text("ClipRRect"),
-              backgroundColor: Colors.transparent,
-            ),
-            body: Center(
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(10),
-                child: Container(
-                  color: Colors.redAccent,
-                  width: 250,
-                  height: 250,
+          body: CustomScrollView(
+            slivers: [
+              const SliverAppBar(
+                title: Text("Sliver"),
+                floating: true,
+              ),
+              SliverList(
+                delegate: SliverChildListDelegate(
+                  [
+                    SizedBox(
+                      width: double.infinity,
+                      child: Column(
+                        children: [
+                          ...Iterable.generate(50)
+                              .map(
+                                (e) => Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(12),
+                                    child: Container(
+                                      color: Colors.lightBlueAccent,
+                                      width: 120,
+                                      height: 120,
+                                    ),
+                                  ),
+                                ),
+                              )
+                              .toList()
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
               ),
-            )),
+            ],
+          ),
+        ),
       );
 }
