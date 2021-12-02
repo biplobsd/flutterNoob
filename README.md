@@ -4,9 +4,11 @@ A new Flutter project.
 
 
 # Preview
-| [Future Builder](https://github.com/biplobsd/flutterNoob/tree/21abe0810d27452d3a6c4126e263d96729fcba64) | [Sliver](https://github.com/biplobsd/flutterNoob/tree/a09fb30933e713a8721be1ec0ba9d447ca28911e) |
-| --- | ----------- |
-| <img src="assets/screenshort/gif/futureBuilder.gif" width="300" height="550"> | <img src="assets/screenshort/gif/Sliver.gif" width="300" height="550"> |
+| [Future Builder](https://github.com/biplobsd/flutterNoob/tree/21abe0810d27452d3a6c4126e263d96729fcba64) | [Sliver](https://github.com/biplobsd/flutterNoob/tree/a09fb30933e713a8721be1ec0ba9d447ca28911e) | [ClipRRect](https://github.com/biplobsd/flutterNoob/tree/ef4edf29cabf95a55001d9c87cfe2e8c217c7d9e) |
+| ----------- | ----------- | ----------- |
+| <img src="assets/screenshort/gif/futureBuilder.gif" width="300" height="550"> | <img src="assets/screenshort/gif/Sliver.gif" width="300" height="550"> | <img src="assets/screenshort/gif/ClipRRect.gif" width="300" height="550"> |
+| [Spread Operator](https://github.com/biplobsd/flutterNoob/tree/384140f6277bc091607782a3b83fa676a22581d6) | [_](https://github.com/biplobsd/flutterNoob/tree/a09fb30933e713a8721be1ec0ba9d447ca28911e) | [_](https://github.com/biplobsd/flutterNoob/tree/ef4edf29cabf95a55001d9c87cfe2e8c217c7d9e) |
+| <img src="assets/screenshort/gif/SpreadOperator.gif" width="300" height="550"> | <img src="assets/screenshort/gif/.gif" width="300" height="550"> | <img src="assets/screenshort/gif/.gif" width="300" height="550"> |
 
 ## Getting Started
 
