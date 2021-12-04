@@ -1,81 +1,103 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(
-      const MaterialApp(
-        home: MyApp(),
+void main() => runApp(const Search());
+
+class Search extends StatefulWidget {
+  const Search({Key? key}) : super(key: key);
+
+  @override
+  _SearchState createState() => _SearchState();
+}
+
+class _SearchState extends State<Search> {
+  List<String> words = ['henten', 'ai', 'two'];
+  final amountController = TextEditingController();
+
+  late List<String> searchedWords = words;
+  List<String> search(String input) {
+    return words
+        .where(
+          (element) => element.contains(input),
+        )
+        .toList();
+  }
+
+  void searched({String dataInput = ""}) {
+    if (dataInput.isEmpty) {
+      dataInput = amountController.text;
+    }
+    setState(() {
+      searchedWords = search(dataInput);
+      // print('changed');
+      // print(words);
+    });
+  }
+
+  void _add() {
+    words.add(amountController.text);
+    amountController.text = '';
+    searched();
+  }
+
+  void _remove(index) {
+    words.remove(words[index]);
+    searched();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text('Simple List Add Remove Search'),
+        ),
+        body: Column(
+          children: [
+            Flexible(
+              child: ListReturn(_remove, viewList: searchedWords),
+            ),
+            TextField(
+              decoration: const InputDecoration(
+                  labelText: 'Search & Add', fillColor: Colors.purple),
+              onChanged: (String value) async {
+                searched(dataInput: value);
+              },
+              onSubmitted: (_) => _add(),
+              // onTap: searched,
+              controller: amountController,
+            ),
+            ElevatedButton(
+              onPressed: _add,
+              child: const Icon(Icons.add),
+            )
+          ],
+        ),
       ),
     );
-
-Future<List<String>> getData() async {
-  await Future.delayed(
-    const Duration(
-      seconds: 2,
-    ),
-  );
-  return [...Iterable.generate(10).map((e) => "New Value $e").toList()];
+  }
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+class ListReturn extends StatelessWidget {
+  final List<String> viewList;
+  final Function setHandler;
+  const ListReturn(this.setHandler, {Key? key, required this.viewList})
+      : super(key: key);
 
   @override
-  Widget build(BuildContext context) => Scaffold(
-        appBar: AppBar(
-          title: const Text("Future Builder"),
+  Widget build(BuildContext context) {
+    return ListView.builder(
+      itemCount: viewList.length,
+      itemBuilder: (BuildContext context, int index) => ListTile(
+        trailing: IconButton(
+          icon: const Icon(Icons.delete, color: Colors.red),
+          onPressed: () {
+            setHandler(index);
+          },
         ),
-        body: Center(
-          child: ElevatedButton(
-            child: const Text("Show"),
-            onPressed: () => Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => const Nice(),
-              ),
-            ),
-          ),
+        title: Text(
+          viewList[index],
         ),
-      );
-}
-
-class Nice extends StatelessWidget {
-  const Nice({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) => Scaffold(
-        appBar: AppBar(),
-        body: Center(
-          child: FutureBuilder(
-            future: getData(),
-            builder: (context, AsyncSnapshot<List<String>> snapshot) {
-              return snapshot.connectionState == ConnectionState.waiting
-                  ? const CircularProgressIndicator()
-                  : Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Column(
-                        children: [
-                          Column(
-                            children: List.generate(
-                              snapshot.data!.length,
-                              (index) => Text(
-                                snapshot.data![index],
-                                style: const TextStyle(fontSize: 25),
-                              ),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: ElevatedButton(
-                              onPressed: () {
-                                Navigator.pop(context);
-                              },
-                              child: const Text("Back"),
-                            ),
-                          ),
-                        ],
-                      ),
-                    );
-            },
-          ),
-        ),
-      );
+      ),
+    );
+  }
 }
