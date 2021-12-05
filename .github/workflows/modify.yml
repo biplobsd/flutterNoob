@@ -12,7 +12,7 @@ jobs:
     
     - name: Added preview on README.md, last commit title, hash, preview path
       run: |
-        python .ci/add_preview.py -t ${{ github.event.head_commit.message }} -turl "${{ github.event.html_url }}/tree/${{ github.event.head_commit.id }}"
+        python .ci/add_preview.py -t "${{ github.event.head_commit.message }}" -turl "${{ github.event.repository.html_url }}/tree/${{ github.event.head_commit.id }}"
     - name: Commit files 
       run: |
         git config --local user.name  ${{ github.actor }}
