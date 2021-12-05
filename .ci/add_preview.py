@@ -1,8 +1,7 @@
 import argparse, re
 
-def addlinedata(addstring, line, mode=0):
+def addlinedata(addstring, line, mode=0, file_name='README.md'):
   list_of_lines = []
-  file_name = 'README.md'
   adding_string = f" {addstring} |"
   with open(file_name, 'r') as r:
     list_of_lines = r.readlines()
@@ -21,7 +20,7 @@ def titleurl(name='new add', link='----------Url------------'):
 def imageurl(url='assets/screenshort/gif/------------.gif'):
   return f'<img src="{url}" width="150" height="275">'
 
-def readdata():
+def readdata(file_name='README.md'):
   with open('README.md') as r:
     return r.read()
 
@@ -60,9 +59,11 @@ if __name__ == "__main__":
       '-turl', type=str, help='Title url', required=True)
   parser.add_argument(
       '-i', type=str, help='Image url', required=True)
+  parser.add_argument(
+      '-p', type=str, help='Path of README.md file', required=True)
   
   args = parser.parse_args()
-  data = readdata()
+  data = readdata(args.p)
   lastnameline, lastimageline = findplace(data)
 
   if islastlinecompleted(data):
@@ -71,6 +72,4 @@ if __name__ == "__main__":
   else:
     addlinedata(titleurl(name=args.t, link=args.turl), lastnameline+2, 1)
     addlinedata(imageurl(url=args.i), lastnameline+3, 1)
-
-
 
