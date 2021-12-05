@@ -1,103 +1,38 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-void main() => runApp(const Search());
+void main() => runApp(const MyAppRoot());
 
-class Search extends StatefulWidget {
-  const Search({Key? key}) : super(key: key);
-
-  @override
-  _SearchState createState() => _SearchState();
-}
-
-class _SearchState extends State<Search> {
-  List<String> words = ['henten', 'ai', 'two'];
-  final amountController = TextEditingController();
-
-  late List<String> searchedWords = words;
-  List<String> search(String input) {
-    return words
-        .where(
-          (element) => element.contains(input),
-        )
-        .toList();
-  }
-
-  void searched({String dataInput = ""}) {
-    if (dataInput.isEmpty) {
-      dataInput = amountController.text;
-    }
-    setState(() {
-      searchedWords = search(dataInput);
-      // print('changed');
-      // print(words);
-    });
-  }
-
-  void _add() {
-    words.add(amountController.text);
-    amountController.text = '';
-    searched();
-  }
-
-  void _remove(index) {
-    words.remove(words[index]);
-    searched();
-  }
+class MyAppRoot extends StatelessWidget {
+  const MyAppRoot({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Simple List Add Remove Search'),
-        ),
-        body: Column(
-          children: [
-            Flexible(
-              child: ListReturn(_remove, viewList: searchedWords),
-            ),
-            TextField(
-              decoration: const InputDecoration(
-                  labelText: 'Search & Add', fillColor: Colors.purple),
-              onChanged: (String value) async {
-                searched(dataInput: value);
-              },
-              onSubmitted: (_) => _add(),
-              // onTap: searched,
-              controller: amountController,
-            ),
-            ElevatedButton(
-              onPressed: _add,
-              child: const Icon(Icons.add),
-            )
-          ],
-        ),
-      ),
+    return const MaterialApp(
+      home: MyApp(),
     );
   }
 }
 
-class ListReturn extends StatelessWidget {
-  final List<String> viewList;
-  final Function setHandler;
-  const ListReturn(this.setHandler, {Key? key, required this.viewList})
-      : super(key: key);
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      itemCount: viewList.length,
-      itemBuilder: (BuildContext context, int index) => ListTile(
-        trailing: IconButton(
-          icon: const Icon(Icons.delete, color: Colors.red),
-          onPressed: () {
-            setHandler(index);
-          },
-        ),
-        title: Text(
-          viewList[index],
-        ),
-      ),
-    );
+    Size size = MediaQuery.of(context).size;
+    double height = size.height;
+    double width = size.width;
+
+    return Scaffold(
+        appBar: AppBar(),
+        body: Padding(
+          padding: const EdgeInsets.all(8),
+          child: Center(
+            child: Text(
+              "Height: $height width: $width",
+              style: const TextStyle(fontSize: 40),
+            ),
+          ),
+        ));
   }
 }
