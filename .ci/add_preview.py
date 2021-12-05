@@ -1,4 +1,4 @@
-import argparse, re
+import argparse, re, os
 
 def addlinedata(addstring, line, mode=0, file_name='README.md'):
   list_of_lines = []
@@ -49,6 +49,12 @@ def findplace(data):
 
   return (lastnameline, lastimageline)
 
+def getimageurl(data):
+  addedpreview = re.findall(r'assets\/screenshort\/gif\/([^"]+)', data, re.M)
+  infolder = os.listdir('assets/screenshort/gif')
+
+  return list(set(infolder).difference(addedpreview))[0]
+
 
 if __name__ == "__main__":
   parser = argparse.ArgumentParser(
@@ -58,18 +64,19 @@ if __name__ == "__main__":
   parser.add_argument(
       '-turl', type=str, help='Title url', required=True)
   parser.add_argument(
-      '-i', type=str, help='Image url', required=True)
+      '-i', type=str, help='Image url')
   parser.add_argument(
-      '-p', type=str, help='Path of README.md file', required=True)
+      '-p', type=str, help='Path of README.md file', default="../README.md")
   
   args = parser.parse_args()
   data = readdata(args.p)
+  imagepath = args.i if args.i else "assets/screenshort/gif/"+getimageurl(data)
   lastnameline, lastimageline = findplace(data)
 
   if islastlinecompleted(data):
     addlinedata(titleurl(name=args.t, link=args.turl), lastnameline)
-    addlinedata(imageurl(url=args.i), lastimageline)
+    addlinedata(imageurl(url=imagepath), lastimageline)
   else:
     addlinedata(titleurl(name=args.t, link=args.turl), lastnameline+2, 1)
-    addlinedata(imageurl(url=args.i), lastnameline+3, 1)
+    addlinedata(imageurl(url=imagepath), lastnameline+3, 1)
 
