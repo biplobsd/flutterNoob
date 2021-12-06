@@ -9,6 +9,8 @@ A new Flutter project.
 | <img src="assets/screenshort/gif/futureBuilder.gif" width="150" height="275"> | <img src="assets/screenshort/gif/Sliver.gif" width="150" height="275"> | <img src="assets/screenshort/gif/ClipRRect.gif" width="150" height="275"> |
 | [Spread Operator](https://github.com/biplobsd/flutterNoob/tree/384140f6277bc091607782a3b83fa676a22581d6) | [ListAddRemoveSearch](https://github.com/biplobsd/flutterNoob/tree/b686bfae35406149eba0c7b9bae2ae331dcc311b) | [Screen Size](https://github.com/biplobsd/flutterNoob/tree/114e273462028a54757fd6fa362edd508885e51b) |
 | <img src="assets/screenshort/gif/SpreadOperator.gif" width="150" height="275"> | <img src="assets/screenshort/gif/SimpleListAddRemoveSearch.gif" width="150" height="275"> | <img src="assets/screenshort/gif/screenSize.gif" width="150" height="275"> |
+| [Animated Icon Buttons](https://github.com/biplobsd/flutterNoob/tree/3414641feeb3e1b0ca48c25fc4d42f7f82f2e055) |
+| <img src="assets/screenshort/gif/AnimatedIconButtons.gif" width="150" height="275"> |
 
 ## Getting Started
 
