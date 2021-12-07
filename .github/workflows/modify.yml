@@ -1,7 +1,7 @@
 name: Added Preview README.md Pages
 on:
   push:
-    paths: ['assets/screenshort/gif/*._']
+    paths: ['assets/screenshort/gif/*.gif']
 
 jobs:
   add_preview:
