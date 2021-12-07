@@ -1,7 +1,7 @@
-name: Build GH Pages
+name: Added Preview README.md Pages
 on:
   push:
-    paths: ['assets/screenshort/gif/*.gif']
+    paths: ['assets/screenshort/gif/*._']
 
 jobs:
   add_preview:
